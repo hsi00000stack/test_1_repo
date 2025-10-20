@@ -1,0 +1,31 @@
+
+<input id="a" type="number" placeholder="A">
+<select id="op">
+  <option value="+">+</option><option value="-">-</option>
+  <option value="*">*</option><option value="/">/</option>
+</select>
+<input id="b" type="number" placeholder="B">
+<button id="calc">=</button>
+<strong id="res"></strong>
+
+<script>
+   const a = document.getElementById('a');
+   const b = document.getElementById('b');
+   const op = document.getElementById('op');
+   const res = document.getElementById('res');
+
+  document.getElementById('calc').addEventListener('click', () => {
+    const x = parseFloat(a.value), y = parseFloat(b.value);
+    if (isNaN(x) ||isNaN(y)) { res.textContent = '숫자를 입력하세요'; return; }
+   
+    let r;
+    switch (op.value) {
+      case '+': r = x + y; break;
+      case '-': r = x - y; break;
+      case '*': r = x * y; break;
+      case '/': r = (y === 0) ? '0으로 나눌 수 없음' : x / y; break;
+    }
+    res.textContent = r;
+  });
+</script>
+
